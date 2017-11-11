@@ -75,10 +75,20 @@ export default class App extends Component {
     let switchButton = 'show list'
     if(this.state.showList) switchButton = 'hidden list'
 
+    const classes = []
+
+    if(this.state.persons.length <= 2) {
+      classes.push('red')
+    }
+
+    if(this.state.persons.length <= 1) {
+      classes.push('bold')
+    }
+
     return (
       <div className='box'>
         <div className='itembox'>
-          <h1>Lista de Personas</h1>
+          <h1 className={classes.join(' ')}>Persons List</h1>
           <button style={button} onClick={this.showList}>{switchButton}</button>
           {personList}
         </div>

@@ -21,3 +21,10 @@ body {
   box-shadow : 0px 2px 10px #000000;
   padding: 10px
 }
+
+.red {
+  color : red;
+}
+.bold {
+  font-size: 10px;
+}

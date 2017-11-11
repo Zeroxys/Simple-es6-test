@@ -51,6 +51,10 @@ export default class App extends Component {
 
     let personList = null
 
+    const button = {
+      backgroundColor : 'green'
+    }
+
     if (this.state.showList) {
       personList =  (
         <div>
@@ -65,13 +69,17 @@ export default class App extends Component {
           })}
         </div>
       )
+      button.backgroundColor = 'red'
     }
+
+    let switchButton = 'show list'
+    if(this.state.showList) switchButton = 'hidden list'
 
     return (
       <div className='box'>
         <div className='itembox'>
           <h1>Lista de Personas</h1>
-          <button onClick={this.showList}>Show list</button>
+          <button style={button} onClick={this.showList}>{switchButton}</button>
           {personList}
         </div>
       </div>

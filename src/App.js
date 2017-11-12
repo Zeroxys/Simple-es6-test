@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import Person from './Person/Person'
+import Radium, {StyleRoot} from 'radium'
 
-export default class App extends Component {
+class App extends Component {
   constructor (props) {
     super()
     this.state = {
@@ -52,7 +53,10 @@ export default class App extends Component {
     let personList = null
 
     const button = {
-      backgroundColor : 'green'
+      backgroundColor : 'green',
+      ':hover' : {
+        backgroundColor: 'salmon'
+      }
     }
 
     if (this.state.showList) {
@@ -69,7 +73,11 @@ export default class App extends Component {
           })}
         </div>
       )
+
       button.backgroundColor = 'red'
+      button[':hover'] = {
+        backgroundColor: 'lightgreen'
+      }
     }
 
     let switchButton = 'show list'
@@ -86,13 +94,17 @@ export default class App extends Component {
     }
 
     return (
-      <div className='box'>
-        <div className='itembox'>
-          <h1 className={classes.join(' ')}>Persons List</h1>
-          <button style={button} onClick={this.showList}>{switchButton}</button>
-          {personList}
+      <StyleRoot>
+        <div className='box'>
+          <div className='itembox'>
+            <h1 className={classes.join(' ')}>Persons List</h1>
+            <button style={button} onClick={this.showList}>{switchButton}</button>
+            {personList}
+          </div>
         </div>
-      </div>
+      </StyleRoot>
     )
   }
 }
+
+export default Radium(App)
